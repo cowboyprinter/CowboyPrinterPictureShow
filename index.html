@@ -71,6 +71,9 @@
         }
     </style>
 </head>
+
+
+
 <body>
     <div class=" background-image">
 
@@ -78,12 +81,59 @@
     </div>
 
     <div class="movie-title" style="font-weight: 700;">The Cowboy Printer Picture Show</div>
-    <video controls>
-        <source src="https://archive.org/download/unchienandalou_201502/unchienandalou_201502.mp4" type="video/mp4">
+    
+    
+
+    <video id="video-player" controls>
+        <source id="video-source" src="https://archive.org/download/unchienandalou_201502/unchienandalou_201502.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <div class="info-text" style="color: white; font-weight: 700;">
-    Enjoy the show!
+
+    <div id="now-playing" class="info-text" style="color: white; font-weight: 700;">
+        Enjoy the Show
     </div>
+
+    <div class="media-library">
+        <h2>Media Library</h2>
+        <ul>
+            <li><a href="#" class="movie-link" data-src="https://archive.org/download/unchienandalou_201502/unchienandalou_201502.mp4">Un Chien Andalou (1929)</a></li>
+            <li><a href="#" class="movie-link" data-src="https://ia601307.us.archive.org/10/items/TheLittleShopOfHorrors1960/The-Little-Shop-of-Horrors_512kb.mp4">Little Shop of Horrors (1960)</a></li>
+            <li><a href="#" class="movie-link" data-src="https://ia600206.us.archive.org/21/items/Nosferatu_most_complete_version_93_mins./Nosferatu_1922_Symphony_of_Horror_512kb.mp4">Nosferatu (1922)</a></li>
+            <li><a href="#" class="movie-link" data-src="https://ia801301.us.archive.org/35/items/NightOfTheLivingDead1968-Restored/Notld1968Restoration-desktop_512kb.mp4">Night of the Living Dead (1968)</a></li>
+            <li><a href="#" class="movie-link" data-src="https://ia800201.us.archive.org/34/items/The_Mike_Wallace_Interview___Rod_Serling/interview_512kb.mp4">Rod Serling on censorship interviewed by Mike Wallace (1959)</a></li>
+            <li><a href="#" class="movie-link" data-src="https://ia800507.us.archive.org/15/items/SeeItNow1951/See_it_now_12_23_1951_512kb.mp4">Christmas Episode of "See It Now"; Edward R. Murrow, Fred Friendly (1952)</a></li>
+        </ul>
+    </div>
+        <script>
+        // Get all the movie links from the library
+        const movieLinks = document.querySelectorAll('.movie-link');
+        
+        // Get the video player, its source, and the "now playing" text element
+        const videoPlayer = document.getElementById('video-player');
+        const videoSource = document.getElementById('video-source');
+        const nowPlayingText = document.getElementById('now-playing');
+
+        // Loop through each movie link and add a click event listener
+        movieLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                // Prevent the link from trying to navigate to a new page
+                event.preventDefault(); 
+                
+                // Get the movie URL from the link's 'data-src' attribute
+                const movieUrl = this.getAttribute('data-src');
+                // Get the movie title from the link's text content
+                const movieTitle = this.textContent;
+
+                // Update the video source and the "now playing" text
+                videoSource.setAttribute('src', movieUrl);
+                nowPlayingText.textContent = `Now Playing: ${movieTitle}`;
+                
+                // Tell the video player to load the new source and play it
+                videoPlayer.load();
+                videoPlayer.play();
+            });
+        });
+    </script>
+    
 </body>
 </html>
