@@ -1,3 +1,6 @@
+⚖️ Copyright Disclaimer
+All content is curated for educational and archival purposes only. Attribution is preserved via source links. If any content owner requests removal, it will be honored promptly.
+
 ## 📜 Disclaimer
 
 **Cowboy Printer Picture Show** is an open-source video player template developed and distributed under the [MIT License](https://opensource.org/licenses/MIT). The template itself contains no embedded video content and includes only public placeholder URLs for demonstration purposes.
